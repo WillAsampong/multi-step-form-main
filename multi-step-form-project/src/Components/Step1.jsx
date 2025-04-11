@@ -2,7 +2,7 @@ import React from 'react'
 
 const Step1 = () => {
   return (
-    <div className='p-6 bg-white mx-4 rounded-lg shadow-2xl'>
+    <div className='p-6 bg-white mx-4 rounded-lg shadow-2xl md:shadow-none'>
       <h1 className='text-2xl text-blue-900 font-bold mb-3'>Personal info</h1>
       <p className='text-gray-500 mb-6'>Please provide your name, email address, and phone number.</p>
 
