@@ -1,27 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import Subscriptioncontext from '../context/SubscriptionContext'
 
 const Step3 = () => {
+    const { category, addOns, selectedAddOns, setSelectedAddOns, formatPrice } = useContext(Subscriptioncontext);
 
-    const addOns = [
-        {
-            type: 'Online service',
-            desc: 'Access to multiplayer games',
-            monthlyPrice: '+$1/mo',
-            yearlyPrice: '+$10/yr',
-        },
-        {
-            type: 'Larger storage',
-            desc: 'Extra 1TB of cloud save',
-            monthlyPrice: '+$2/mo',
-            yearlyPrice: '+$20/yr',
-        },
-        {
-            type: 'Customizable Profile',
-            desc: 'Custom theme on your profile',
-            monthlyPrice: '+$2/mo',
-            yearlyPrice: '+$20/yr',
-        }
-    ]
+    const handleAddOnToggle = (addOnId) => {
+        setSelectedAddOns(prev => {
+            if(prev.includes(addOnId)) {
+                return prev.filter(id => id !== addOnId);
+            } else {
+                return [...prev, addOnId]
+            }
+        });
+    };
 
 
   return (
@@ -30,15 +21,15 @@ const Step3 = () => {
         <p className='mb-4 text-gray-400'>Add-ons help enhance your gaming experience.</p>
 
         {
-            addOns.map((item, index) => (
-                <div className='flex justify-between mb-4 px-4 py-2 border border-gray-300 rounded-lg' key={index}>
-                    <input type="checkbox" name="" id="" className='w-4 rounded-md bg-blue-600 border-gray-300 outline-gray-300'/>
+            addOns.map((item) => (
+                <div className={`flex justify-between mb-4 px-4 py-2 border border-gray-300 rounded-lg ${selectedAddOns.includes(item.id) ? 'bg-blue-50 outline-1 outline-blue-600' : '' }`} key={item.id} onClick={() => handleAddOnToggle(item.id)}>
+                    <input type="checkbox" name="" id="" className='w-4 rounded-md bg-blue-600 border-gray-300 outline-gray-300' checked={selectedAddOns.includes(item.id)} onChange={() => {}}/>
                     <div>
                         <h3 className='text-lg font-medium text-blue-950'>{item.type}</h3>
                         <p className='text-sm text-gray-400'>{item.desc}</p>
                     </div>
                     <div className="price flex justify-end items-center">
-                        <p className='text-blue-600 text-sm'>{item.monthlyPrice}</p>
+                        <p className='text-blue-600 text-sm'>{formatPrice(category === 'monthly' ? item.monthlyPrice : item.yearlyPrice)}</p>
                     </div>
                 </div>
             ))

@@ -8,15 +8,15 @@ const Step1 = () => {
 
       <form action="">
         <div className='flex flex-col mb-4'>
-          <label htmlFor="" className='text-blue-800 font-semibold'>Name</label>
+          <label htmlFor="" className='text-blue-800 font-medium'>Name</label>
           <input type="text" placeholder='e.g. Stephen King' className='w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500'/>
         </div>
         <div className='flex flex-col mb-4'>
-          <label htmlFor="" className='text-blue-800 font-semibold'>Email Address</label>
+          <label htmlFor="" className='text-blue-800 font-medium'>Email Address</label>
           <input type="text" placeholder='e.g. stephenking@lorem.com' className='w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500'/>
         </div>
         <div className='flex flex-col mb-4'>
-          <label htmlFor="" className='text-blue-800 font-semibold'>Phone Number</label>
+          <label htmlFor="" className='text-blue-800 font-medium'>Phone Number</label>
           <input type="text" placeholder='e.g. +1 234 567 890' className='w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500'/>
         </div>
       </form>

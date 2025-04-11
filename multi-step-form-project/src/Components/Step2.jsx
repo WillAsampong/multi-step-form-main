@@ -1,42 +1,15 @@
-import { useState } from 'react'
+import SubscriptionContext from "../context/SubscriptionContext"
+import { useContext } from "react"
 
 
 const Step2 = () => {
-  const [category, setCategory] = useState('monthly');
-  const [selected, setSelected] = useState(null);
+  const { selected, setSelected, category, setCategory, plans, formatPrice } = useContext(SubscriptionContext);
 
-  const cardItems = [
-    {
-      id:1,
-      image: './src/assets/images/icon-arcade.svg',
-      title: 'Arcade',
-      monthlyPrice: '$9/mo',
-      yearlyPrice: '$90/yr',
-      category: 'both'
-    },
-    {
-      id: 2,
-      image: './src/assets/images/icon-advanced.svg',
-      title: 'Advanced',
-      monthlyPrice: '$12/mo',
-      yearlyPrice: '$120/yr',
-      category: 'both'
-    },
-    {
-      id: 3,
-      image: "./src/assets/images/icon-pro.svg",
-      title: 'Pro',
-      monthlyPrice: '$15/mo',
-      yearlyPrice: '$150/yr',
-      category: 'both'
-    }
-  ]
-
-  const filterCategory = cardItems.map((item) => ({
+  const filterCategory = plans.map((item) => ({
     ...item,
     displayPrice: category === 'monthly' ? item.monthlyPrice : item.yearlyPrice,
     billingPeriod: category === 'monthly' ? 'mo' : 'yr' 
-  })) 
+  }));
 
   return (
     <div className='mx-5 bg-white rounded-lg shadow-2xl p-6'>
@@ -45,11 +18,11 @@ const Step2 = () => {
 
       {
         filterCategory.map((card) => (
-          <div key={card.id} className={` flex gap-x-3 border border-gray-300 rounded-lg p-6 mb-6 cursor-pointer ${ selected === card.id ? 'bg-blue-50  border-blue-900 outline-1 outline-blue-800' : 'bg-white' }`} onClick={() => setSelected(card.id)}>
+          <div key={card.id} className={` flex gap-x-3 border border-gray-300 rounded-lg p-4 mb-6 cursor-pointer ${ selected === card.id ? 'bg-blue-50  border-blue-900 outline-1 outline-blue-800' : 'bg-white' }`} onClick={() => setSelected(card.id)}>
             <img src={card.image} alt="" />
             <div>
                 <h3 className='text-lg text-blue-950 font-semibold'>{card.title}</h3>
-                <p className='text-gray-400 text-sm'>{card.displayPrice}</p>
+                <p className='text-gray-400 text-sm'>{formatPrice(card.displayPrice)}</p>
                 {category === 'yearly' && <p className='text-blue-900 text-sm mt-1'>2 months free</p>}
             </div>
           </div>
