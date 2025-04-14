@@ -10,7 +10,7 @@ const Step4 = () => {
   const totalPrice = calculateTotal();
 
   return (
-    <div className='p-6 mx-4 bg-white shadow-2xl rounded-lg'>
+    <div className='p-6 mx-4 bg-white shadow-2xl rounded-lg md:shadow-none'>
       <h1 className='text-blue-900 text-2xl font-bold mb-2'>Finishing up</h1>
       <p className='text-gray-400 mb-4'>Double check everything looks OK before confirming.</p>
 
@@ -20,7 +20,7 @@ const Step4 = () => {
             <h4 className='font-semibold text-blue-900'>{selectedPlan.title} ({category === 'monthly' ? 'Monthly' : 'Yearly'})</h4>
             <button className='underline text-gray-400 hover:text-blue-600'>Change</button>
           </div>
-          <p className='font-semibold text-blue-900'>{formatPrice(category === 'monthly' ? selectedPlan.monthlyPrice : selectedPlan.yearlyPriice)}</p>
+          <p className='font-semibold text-blue-900'>{formatPrice(category === 'monthly' ? selectedPlan.monthlyPrice : selectedPlan.yearlyPrice)}</p>
         </div>
 
         {selectedAddOns.length > 0 && (

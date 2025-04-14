@@ -12,14 +12,15 @@ const Step2 = () => {
   }));
 
   return (
-    <div className='mx-5 bg-white rounded-lg shadow-2xl p-6'>
+    <div className='mx-5 bg-white rounded-lg shadow-2xl p-6 md:shadow-none'>
       <h1 className='text-blue-950 font-bold text-2xl mb-2'>Select your plan</h1>
       <p className='mb-4 text-gray-400'>You have the option of monthly or yearly billing.</p>
 
+    <div className="md:flex md:gap-x-4">
       {
         filterCategory.map((card) => (
-          <div key={card.id} className={` flex gap-x-3 border border-gray-300 rounded-lg p-4 mb-6 cursor-pointer ${ selected === card.id ? 'bg-blue-50  border-blue-900 outline-1 outline-blue-800' : 'bg-white' }`} onClick={() => setSelected(card.id)}>
-            <img src={card.image} alt="" />
+          <div key={card.id} className={` flex gap-x-3 border border-gray-300 rounded-lg p-4 mb-6 cursor-pointer ${ selected === card.id ? 'bg-blue-50  border-blue-900 outline-1 outline-blue-800' : 'bg-white' } md:flex-col md:gap-6 md:w-30`} onClick={() => setSelected(card.id)}>
+            <img src={card.image} alt="" className="md:w-8"/>
             <div>
                 <h3 className='text-lg text-blue-950 font-semibold'>{card.title}</h3>
                 <p className='text-gray-400 text-sm'>{formatPrice(card.displayPrice)}</p>
@@ -28,6 +29,7 @@ const Step2 = () => {
           </div>
         ))
       }
+    </div>
 
       <div className="plan-options px-6 py-4 bg-gray-100 rounded-lg mt-4">
         <div className="flex justify-center gap-x-4">
