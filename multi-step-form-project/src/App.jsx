@@ -1,9 +1,9 @@
 import './App.css'
 import './index.css'
 import Step1 from './Components/Step1';
-import Step2 from './Components/step2';
-import Step3 from './Components/step3';
-import Step4 from './Components/step4';
+import Step2 from './Components/ProductPlan';
+import Step3 from './Components/AddOns';
+import Step4 from './Components/FinishingUp';
 import Step5 from './Components/Step5';
 import Sidebar from './Components/Sidebar';
 import NavigationButtons from './Components/NavigationButtons'
@@ -41,8 +41,7 @@ function App() {
       description: 'Summary'
     },
   ]
-  
-  // Render the current step
+
   const renderStep = () => {
     switch(currentStep) {
       case 1:
@@ -64,14 +63,12 @@ function App() {
     <SubscriptionProvider>
     <main className="h-screen bg-blue-50 relative">
       <div className="md:absolute md:top-1/2 md:-translate-y-1/2 left-1/2 md:-translate-x-1/2 md:bg-white md:flex md:h-[600px] md:p-2 md:w-2/3 rounded-xl">
-        {/* Sidebar - visible on all screens but layout differs */}
+
         <Sidebar steps={steps} currentStep={currentStep}/>
-        
-        {/* Main content area */}
+
         <div className="flex-1 md:relative md:mx-18">
           {renderStep()}
-          
-          {/* Navigation buttons - different implementation for mobile/desktop */}
+
           {isMobile ? (
             <div className=''>
               <NavigationButtons 
